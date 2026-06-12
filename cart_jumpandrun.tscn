@@ -166,5 +166,5 @@ position = Vector2(67, 26)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area(Steigung)"]
 polygon = PackedVector2Array(521, 468, 250, 470, 325, 389, 333, 398, 335, 426, 532, 440, 578, 391, 627, 438, 629, 457, 677, 448, 691, 426, 836, 287, 865, 321, 691, 476)
 
-[connection signal="body_entered" from="Area(Respawn)" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area(Respawn)" to="." method="_on_area_respawn_body_entered"]
 [connection signal="body_entered" from="Area(Steigung)" to="Cart" method="_on_area_steigung_body_entered"]
