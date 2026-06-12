@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://c51uvjatq2cuc"]
+[gd_scene load_steps=10 format=4 uid="uid://c51uvjatq2cuc"]
 
 [ext_resource type="Script" uid="uid://bjdqy5ciuso67" path="res://cart.gd" id="1_g6mc0"]
+[ext_resource type="Script" uid="uid://xe2oacejyf32" path="res://cart_jumpandrun.gd" id="1_rteav"]
 [ext_resource type="Texture2D" uid="uid://cqeh16w8nagke" path="res://431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png" id="1_vfvdt"]
 [ext_resource type="Texture2D" uid="uid://bww1er4mmpmth" path="res://New Piskel.png" id="2_vfvdt"]
 [ext_resource type="Script" uid="uid://b63i2yudqbaxr" path="res://tile_map_layer.gd" id="5_xndh3"]
@@ -15,9 +16,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dosda"]
-size = Vector2(83, 70)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6mc0"]
 texture = ExtResource("2_vfvdt")
@@ -126,7 +124,11 @@ texture_region_size = Vector2i(4, 4)
 tile_size = Vector2i(4, 4)
 sources/2 = SubResource("TileSetAtlasSource_g6mc0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rteav"]
+size = Vector2(1996, 57)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_rteav")
 
 [node name="Cart" type="CharacterBody2D" parent="."]
 script = ExtResource("1_g6mc0")
@@ -136,9 +138,10 @@ position = Vector2(92, 450)
 scale = Vector2(0.367188, 0.382812)
 sprite_frames = SubResource("SpriteFrames_dosda")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cart"]
-position = Vector2(95, 454)
-shape = SubResource("RectangleShape2D_dosda")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cart"]
+position = Vector2(92, 450)
+scale = Vector2(0.367188, 0.382812)
+polygon = PackedVector2Array(114.383, -52.245, 92.5956, 94.0409, -35.4042, 91.4286, -65.3616, 80.9796, -87.1488, -65.3063, -114.383, -73.1429, -119.83, -99.2655)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -153,5 +156,8 @@ polygon = PackedVector2Array(48, 544, 48, 496, 329, 495, 400, 424, 488, 424, 488
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, 674, 1151, 673, 1152, 648, 0, 648)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(651, 680.5)
+shape = SubResource("RectangleShape2D_rteav")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
