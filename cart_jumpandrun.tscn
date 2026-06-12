@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://c51uvjatq2cuc"]
+[gd_scene load_steps=13 format=4 uid="uid://c51uvjatq2cuc"]
 
 [ext_resource type="Script" uid="uid://bjdqy5ciuso67" path="res://cart.gd" id="1_g6mc0"]
 [ext_resource type="Script" uid="uid://xe2oacejyf32" path="res://cart_jumpandrun.gd" id="1_rteav"]
 [ext_resource type="Texture2D" uid="uid://cqeh16w8nagke" path="res://431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png" id="1_vfvdt"]
 [ext_resource type="Texture2D" uid="uid://bww1er4mmpmth" path="res://New Piskel.png" id="2_vfvdt"]
 [ext_resource type="Script" uid="uid://b63i2yudqbaxr" path="res://tile_map_layer.gd" id="5_xndh3"]
+[ext_resource type="Texture2D" uid="uid://b0dc2hvbr15bn" path="res://Zielflagge.png" id="6_m60ay"]
+[ext_resource type="Texture2D" uid="uid://518b5q7ojt37" path="res://You_Won.png" id="7_h5435"]
+[ext_resource type="Script" uid="uid://cadoditocj2h2" path="res://you_won.gd" id="8_1cpdm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dosda"]
 animations = [{
@@ -166,5 +169,25 @@ position = Vector2(67, 26)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area(Steigung)"]
 polygon = PackedVector2Array(521, 468, 250, 470, 325, 389, 333, 398, 335, 426, 532, 440, 578, 391, 627, 438, 629, 457, 677, 448, 691, 426, 836, 287, 865, 321, 691, 476)
 
+[node name="Zielflagge" type="Sprite2D" parent="."]
+position = Vector2(1168, 346)
+texture = ExtResource("6_m60ay")
+
+[node name="Area2D_Zielflagge" type="Area2D" parent="Zielflagge"]
+position = Vector2(-1168, -346)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zielflagge/Area2D_Zielflagge"]
+position = Vector2(-504, -241)
+scale = Vector2(3.25298, 1.31897)
+polygon = PackedVector2Array(489.091, 423.059, 509.072, 422.301, 509.072, 364.68, 489.091, 364.68)
+
+[node name="YouWon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575, 324.75)
+scale = Vector2(0.808011, 0.63674)
+texture = ExtResource("7_h5435")
+script = ExtResource("8_1cpdm")
+
 [connection signal="body_entered" from="Area(Respawn)" to="." method="_on_area_respawn_body_entered"]
 [connection signal="body_entered" from="Area(Steigung)" to="Cart" method="_on_area_steigung_body_entered"]
+[connection signal="body_entered" from="Zielflagge/Area2D_Zielflagge" to="." method="_on_area_2d_zielflagge_body_entered"]

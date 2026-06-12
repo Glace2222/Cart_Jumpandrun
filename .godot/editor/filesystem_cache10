@@ -1,5 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1781187797
+::res://::1781291313
 431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png::CompressedTexture2D::5904593489928152160::1781116984::1781187798::1::::<><><>0<>0<>3803f35f256d11b2592e11b289721c03<>res://.godot/imported/431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png-d3815ea6155a36dfdd5f33406dcc30b0.ctex::
-cart_jumpandrun.tscn::PackedScene::6933432813255929834::1781116984::0::1::::<><><>0<>0<><>::uid://cqeh16w8nagke::::res://431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png<>uid://bww1er4mmpmth::::res://New Piskel.png
+cart_jumpandrun.tscn::PackedScene::6933432813255929834::1781281896::0::1::::<><><>0<>0<><>::uid://bjdqy5ciuso67::::res://cart.gd<>uid://xe2oacejyf32::::res://cart_jumpandrun.gd<>uid://cqeh16w8nagke::::res://431ad815c9a8402ebdf354c82923c2a5-einkaufswagen-6.png<>uid://bww1er4mmpmth::::res://New Piskel.png<>uid://b63i2yudqbaxr::::res://tile_map_layer.gd
 New Piskel.png::CompressedTexture2D::3977578277564821941::1781116984::1781187798::1::::<><><>0<>0<>93df83fe7c79d8c8275477b618dfec76<>res://.godot/imported/New Piskel.png-4b57200a9b5d4d6f89cce1bdbbdb2eec.ctex::
+cart.gd::GDScript::3025329319816600774::1781281613::0::1::::Cart<>CharacterBody2D<><>0<>0<><>::
+collision_shape_2d.gd::GDScript::4999431716763894638::1781188435::0::1::::<>CollisionShape2D<><>0<>0<><>::
+cart_jumpandrun.gd::GDScript::1624265277894674615::1781290457::0::1::::<>Node2D<><>0<>0<><>::
+tile_map_layer.gd::GDScript::4620612657577562119::1781275711::0::1::::<>TileMapLayer<><>0<>0<><>::
+You_Won.png::CompressedTexture2D::2161346179192117836::1781291313::1781291313::1::::<><><>0<>0<>33a5aa58194fea7498cf67fcf564b190<>res://.godot/imported/You_Won.png-c9f088a4f286cff4ac0cf2d84385bc14.ctex::
+Zielflagge.png::CompressedTexture2D::4147504958500608615::1781290341::1781290341::1::::<><><>0<>0<>cc9408dd3a0917c7d158dd650b774a3b<>res://.godot/imported/Zielflagge.png-8ac54422b5e112bc2e9199be62be1282.ctex::

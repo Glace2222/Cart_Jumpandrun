@@ -20,3 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_area_respawn_body_entered(body: Node2D) -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_area_2d_zielflagge_body_entered(body: Node2D) -> void:
+	$YouWon.show()
