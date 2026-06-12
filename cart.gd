@@ -1,15 +1,15 @@
 class_name Cart
 extends CharacterBody2D
 
-const gravity = 8.1
-const jump_force = -240
+const gravity = 20
+const jump_force = -400
 
 func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_A):
-		velocity.x = -50
+		velocity.x = -250
 		$AnimatedSprite2D.flip_h = true
 	elif Input.is_key_pressed(KEY_D):
-		velocity.x = 50
+		velocity.x = 250
 		$AnimatedSprite2D.flip_h = false
 	else:
 		velocity.x = 0
