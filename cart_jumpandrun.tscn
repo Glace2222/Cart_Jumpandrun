@@ -9,17 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://518b5q7ojt37" path="res://You_Won.png" id="7_h5435"]
 [ext_resource type="Script" uid="uid://cadoditocj2h2" path="res://you_won.gd" id="8_1cpdm"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dosda"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_vfvdt")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6mc0"]
 texture = ExtResource("2_vfvdt")
 texture_region_size = Vector2i(4, 4)
@@ -130,21 +119,19 @@ sources/2 = SubResource("TileSetAtlasSource_g6mc0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rteav"]
 size = Vector2(3883, 57)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dosda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vfvdt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_rteav")
-
-[node name="Cart" type="CharacterBody2D" parent="."]
-script = ExtResource("1_g6mc0")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cart"]
-position = Vector2(92, 450)
-scale = Vector2(0.367188, 0.382812)
-sprite_frames = SubResource("SpriteFrames_dosda")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cart"]
-position = Vector2(92, 450)
-scale = Vector2(0.367188, 0.382812)
-polygon = PackedVector2Array(114.383, -52.245, 92.5956, 94.0409, -76.2552, 86.2041, -87.1488, -65.3063, -114.383, -73.1429, -119.83, -99.2655)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -152,42 +139,58 @@ tile_map_data = PackedByteArray("AAAGAD4AAgAAAAAAAAAGAD8AAgAAAAEAAAAGAEAAAgAAAAI
 tile_set = SubResource("TileSet_dosda")
 script = ExtResource("5_xndh3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(48, 544, 48, 496, 329, 495, 400, 424, 640, 424, 680, 464, 760, 464, 904, 320, 1176, 320, 1176, 544)
+[node name="Zielflagge" type="Sprite2D" parent="."]
+position = Vector2(1168, 346)
+texture = ExtResource("6_m60ay")
 
 [node name="Area(Respawn)" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area(Respawn)"]
-position = Vector2(1594.5, 680.5)
+position = Vector2(1321, 1701)
 shape = SubResource("RectangleShape2D_rteav")
 
 [node name="Area(Steigung)" type="Area2D" parent="."]
 position = Vector2(67, 26)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area(Steigung)"]
-polygon = PackedVector2Array(521, 468, 250, 470, 325, 389, 333, 398, 335, 426, 532, 440, 578, 391, 627, 438, 629, 457, 677, 448, 691, 426, 836, 287, 865, 321, 691, 476)
+polygon = PackedVector2Array(232, 471, 320, 378, 333, 395, 268, 470)
 
-[node name="Zielflagge" type="Sprite2D" parent="."]
-position = Vector2(1168, 346)
-texture = ExtResource("6_m60ay")
+[node name="Area2D_Zielflagge" type="Area2D" parent="."]
+position = Vector2(-1, 2)
 
-[node name="Area2D_Zielflagge" type="Area2D" parent="Zielflagge"]
-position = Vector2(-1168, -346)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zielflagge/Area2D_Zielflagge"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D_Zielflagge"]
 position = Vector2(-504, -241)
 scale = Vector2(3.25298, 1.31897)
 polygon = PackedVector2Array(489.091, 423.059, 509.072, 422.301, 509.072, 364.68, 489.091, 364.68)
 
-[node name="YouWon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(575, 324.75)
-scale = Vector2(0.808011, 0.63674)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(48, 544, 48, 496, 329, 495, 400, 424, 640, 424, 680, 464, 760, 464, 904, 320, 1176, 320, 1176, 544)
+
+[node name="Cart" type="CharacterBody2D" parent="."]
+script = ExtResource("1_g6mc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cart"]
+visibility_layer = 2
+position = Vector2(92, 361)
+scale = Vector2(0.367188, 0.382812)
+sprite_frames = SubResource("SpriteFrames_dosda")
+
+[node name="Camera2D" type="Camera2D" parent="Cart"]
+position = Vector2(93, 356)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cart"]
+position = Vector2(92, 361)
+scale = Vector2(0.367188, 0.382812)
+polygon = PackedVector2Array(114.383, -52.245, 92.5956, 94.0409, -76.2552, 86.2041, -87.1488, -65.3063, -114.383, -73.1429, -119.83, -99.2655)
+
+[node name="YouWon" type="Sprite2D" parent="Cart"]
+position = Vector2(95.0002, 357)
+scale = Vector2(2.02348, 1.76796)
 texture = ExtResource("7_h5435")
 script = ExtResource("8_1cpdm")
 
 [connection signal="body_entered" from="Area(Respawn)" to="." method="_on_area_respawn_body_entered"]
-[connection signal="body_entered" from="Area(Steigung)" to="Cart" method="_on_area_steigung_body_entered"]
-[connection signal="body_entered" from="Zielflagge/Area2D_Zielflagge" to="." method="_on_area_2d_zielflagge_body_entered"]
+[connection signal="body_entered" from="Area(Steigung)" to="." method="_on_area_steigung_body_entered"]
+[connection signal="body_entered" from="Area2D_Zielflagge" to="Cart/YouWon" method="_on_area_2d_zielflagge_body_entered"]
